@@ -7,7 +7,7 @@ import Elm.Kernel.Debug exposing (crash)
 import Elm.Kernel.Debugger exposing (element, document)
 import Elm.Kernel.Json exposing (runHelp)
 import Elm.Kernel.List exposing (Nil)
-import Elm.Kernel.Platform exposing (effectManagers, initialize)
+import Elm.Kernel.Platform exposing (effectManagers, initialize_Lamdera)
 import Elm.Kernel.Scheduler exposing (binding, enqueue, fail, rawSpawn, succeed, spawn)
 import Elm.Kernel.Utils exposing (Tuple0, Tuple2)
 import Elm.Kernel.VirtualDom exposing (appendChild, applyPatches, diff, doc, node, passiveSupported, render, divertHrefToApp)
@@ -30,10 +30,10 @@ var _Browser_element = __Debugger_element || F3(function(impl, flagDecoder, debu
 {
 	var init = function(args)
 	{
-		return __Platform_initialize(
+		return __Platform_initialize_Lamdera(
 			flagDecoder,
 			args,
-			// These three arguments are used by old versions of __Platform_initialize.
+			// These three arguments are used by old versions of __Platform_initialize_Lamdera.
 			// Newer versions ignore them.
 			impl.__$init,
 			impl.__$update,
@@ -67,7 +67,7 @@ var _Browser_element = __Debugger_element || F3(function(impl, flagDecoder, debu
 				};
 
 				// The initial draw used to be a side effect of `stepperBuilder`.
-				// Newer versions of `__Platform_initialize` do that instead.
+				// Newer versions of `__Platform_initialize_Lamdera` do that instead.
 				// Older versions don’t send the `platformInitializeWillDoInitialDraw`
 				// parameter, which means that we need to do it here for compatibility.
 				if (!platformInitializeWillDoInitialDraw)
@@ -77,7 +77,7 @@ var _Browser_element = __Debugger_element || F3(function(impl, flagDecoder, debu
 
 				return stepper;
 			},
-			// Only used by newer versions of __Platform_initialize.
+			// Only used by newer versions of __Platform_initialize_Lamdera.
 			impl
 		);
 	};
@@ -104,10 +104,10 @@ var _Browser_document = __Debugger_document || F3(function(impl, flagDecoder, de
 {
 	var init = function(args)
 	{
-		return __Platform_initialize(
+		return __Platform_initialize_Lamdera(
 			flagDecoder,
 			args,
-			// These three arguments are used by old versions of __Platform_initialize.
+			// These three arguments are used by old versions of __Platform_initialize_Lamdera.
 			// Newer versions ignore them.
 			impl.__$init,
 			impl.__$update,
@@ -149,7 +149,7 @@ var _Browser_document = __Debugger_document || F3(function(impl, flagDecoder, de
 				};
 
 				// The initial draw used to be a side effect of `stepperBuilder`.
-				// Newer versions of `__Platform_initialize` do that instead.
+				// Newer versions of `__Platform_initialize_Lamdera` do that instead.
 				// Older versions don’t send the `platformInitializeWillDoInitialDraw`
 				// parameter, which means that we need to do it here for compatibility.
 				if (!platformInitializeWillDoInitialDraw)
@@ -159,7 +159,7 @@ var _Browser_document = __Debugger_document || F3(function(impl, flagDecoder, de
 
 				return stepper;
 			},
-			// Only used by newer versions of __Platform_initialize.
+			// Only used by newer versions of __Platform_initialize_Lamdera.
 			impl
 		);
 	}
